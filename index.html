@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GRAVITY — Digital Studio</title>
+<meta name="description" content="GRAVITY — an independent digital studio. Less noise. More gravity." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+</head>
+<body>
+
+  <!-- ===================== LOADER ===================== -->
+  <div id="loader" class="loader">
+    <div class="loader-col">
+      <p id="loader-status" class="loader-status">Calibrating gravity field</p>
+      <div class="loader-bar-track">
+        <div id="loader-bar-fill" class="loader-bar-fill"></div>
+      </div>
+      <p id="loader-counter" class="loader-counter">000%</p>
+    </div>
+  </div>
+
+  <!-- ===================== BACKGROUND GRADIENT ===================== -->
+  <div id="bg-gradient" class="bg-gradient" data-stage="0"></div>
+
+  <!-- ===================== WEBGL CANVAS ===================== -->
+  <div id="webgl-container" class="webgl-container">
+    <canvas id="webgl-canvas"></canvas>
+  </div>
+
+  <!-- ===================== HEADER ===================== -->
+  <header id="site-header" class="site-header">
+    <div class="header-left">
+      <a href="#hero" class="wordmark" data-nav>GRAVITY</a>
+    </div>
+
+    <nav class="header-nav">
+      <a href="#drop" data-nav>Works</a>
+      <a href="#shape" data-nav>Services</a>
+      <a href="#release" data-nav>Team</a>
+      <a href="#release" data-nav>Story</a>
+      <a href="#site-footer" data-nav>Contact</a>
+    </nav>
+
+    <div class="header-right">
+      <button id="drawer-open-btn" class="icon-btn" type="button" aria-label="Open studio controls" aria-haspopup="dialog" aria-expanded="false" aria-controls="controls-drawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sliders"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg>
+      </button>
+
+      <a id="contact-pill" class="contact-pill group" href="#site-footer" data-nav>
+        <span>Contact us</span>
+        <span class="contact-orb">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon-chevron"><path d="m9 18 6-6-6-6"/></svg>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== SECTION 01 — HERO ===================== -->
+    <section id="hero" class="section hero-section">
+      <div class="hero-row reveal-hero">
+        <div class="hero-left">
+          <p class="eyebrow hero-anim" data-delay="0.15">[ Digital studio ]</p>
+          <h1 class="hero-headline hero-anim" data-delay="0.28">Less noise. More gravity.</h1>
+        </div>
+        <div class="hero-right hero-anim" data-delay="0.45">
+          <p class="hero-paragraph">We design digital experiences that remove distraction and amplify presence.</p>
+          <p class="hero-credit">© 2026 — Independent digital agency</p>
+          <div class="scroll-cue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+            <span>Scroll</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 02 — DROP / PHYSICS ===================== -->
+    <section id="drop" class="section drop-section">
+      <div class="drop-grid">
+        <div class="drop-left">
+          <p class="label reveal" data-delay="0">[ 02 — Physics ]</p>
+          <h2 class="heading-lg reveal" data-delay="0.1">When structure<br />lets go.</h2>
+          <p class="body-paragraph reveal" data-delay="0.2">Keep scrolling and the field surrenders to gravity. Every sphere obeys real simulated physics — mass, momentum, restitution — tumbling down and bouncing off the floor until the energy finally settles.</p>
+        </div>
+        <div class="drop-right reveal" data-delay="0.25">
+          <div class="stat-card">
+            <div class="stat-card-inner">
+              <div class="stat-card-head">
+                <span class="stat-index">01</span>
+                <span class="stat-key">Solver</span>
+                <span class="stat-dot"></span>
+              </div>
+              <p class="stat-value">Verlet · 4 sub-steps</p>
+              <p class="stat-desc">Stable stacking at 60fps</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-inner">
+              <div class="stat-card-head">
+                <span class="stat-index">02</span>
+                <span class="stat-key">Restitution</span>
+                <span class="stat-dot"></span>
+              </div>
+              <p class="stat-value">0.65 — bouncy</p>
+              <p class="stat-desc">Energy lost on every contact</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-inner">
+              <div class="stat-card-head">
+                <span class="stat-index">03</span>
+                <span class="stat-key">Bodies</span>
+                <span class="stat-dot"></span>
+              </div>
+              <p class="stat-value">Real-time GPU</p>
+              <p class="stat-desc">No pre-baked animation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 03 — SHAPE / FORM ===================== -->
+    <section id="shape" class="section shape-section">
+      <div class="shape-top">
+        <p class="label reveal" data-delay="0">[ 03 — Form ]</p>
+        <h2 class="heading-lg shape-heading reveal" data-delay="0.1">Chaos, then form.</h2>
+      </div>
+      <div class="shape-bottom">
+        <p class="body-paragraph reveal" data-delay="0.15">Out of free-fall, the field reassembles — every bubble finding its place in a single shape. Move your cursor through it and watch the order ripple, scatter, and recover.</p>
+        <div class="swipe-pill reveal" data-delay="0.28">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mouse-pointer"><path d="M12.586 12.586 19 19"/><path d="M3.688 3.037a.497.497 0 0 0-.651.651l6.666 16.667a.495.495 0 0 0 .902.015l2.859-6.722a.495.495 0 0 1 .258-.258l6.722-2.859a.495.495 0 0 0-.015-.902z"/></svg>
+          <span>Swipe through it</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 04 — RELEASE ===================== -->
+    <section id="release" class="section release-section">
+      <p class="label reveal" data-delay="0">[ 04 — Release ]</p>
+      <h2 class="release-heading reveal" data-delay="0.12">And then,<br />weightless.</h2>
+      <p class="body-paragraph release-paragraph reveal" data-delay="0.24">The whole field lifts off the screen and rushes past you — every sphere accelerating into the lens until nothing remains but light. Less noise.</p>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="site-footer" class="site-footer">
+    <div class="footer-glow footer-glow-tr"></div>
+    <div class="footer-glow footer-glow-bl"></div>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track" id="marquee-track">
+        <span class="marquee-seq"></span>
+        <span class="marquee-seq"></span>
+      </div>
+    </div>
+
+    <div class="footer-body">
+      <div class="footer-grid">
+        <div class="footer-cta reveal" data-delay="0">
+          <p class="footer-eyebrow">[ Let's collaborate ]</p>
+          <h3 class="footer-heading">Have an idea<br />with real weight?</h3>
+          <a class="email-pill" href="mailto:hello@gravity.studio">
+            <span>hello@gravity.studio</span>
+            <span class="email-orb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col reveal" data-delay="0">
+            <p class="footer-col-title">Studio</p>
+            <ul>
+              <li><a href="#drop" data-nav>Works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+              <li><a href="#drop" data-nav>Services<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+              <li><a href="#shape" data-nav>Process<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+              <li><a href="mailto:hello@gravity.studio?subject=Careers">Careers<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+            </ul>
+          </div>
+          <div class="footer-col reveal" data-delay="0.08">
+            <p class="footer-col-title">Company</p>
+            <ul>
+              <li><a href="#release" data-nav>Story<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+              <li><a href="#release" data-nav>Team<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+              <li><a href="mailto:hello@gravity.studio?subject=Journal">Journal<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+              <li><a href="mailto:hello@gravity.studio">Contact<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+            </ul>
+          </div>
+          <div class="footer-col reveal" data-delay="0.16">
+            <p class="footer-col-title">Social</p>
+            <ul>
+              <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+              <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+              <li><a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-arrow-up-right"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <span class="footer-wordmark">GRAVITY</span>
+          <span class="footer-dot"></span>
+          <span class="footer-copy">© 2026 Digital Studio — All rights reserved.</span>
+        </div>
+        <div class="footer-bottom-right">
+          <a class="social-btn" href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5 1.5 9.5 2.5 4.5c2.7 3.1 6.4 5 10.5 5.2-.6-2.6.4-5.3 2.6-6.8 2-1.3 4.5-1.2 6.4.3-1.1.2-2.1.6-3 1.3 1.6-.1 3-.5 4-1.5Z"/></svg>
+          </a>
+          <a class="social-btn" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a class="social-btn" href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== STUDIO CONTROLS DRAWER ===================== -->
+  <div id="drawer-scrim" class="drawer-scrim"></div>
+  <aside id="controls-drawer" class="controls-drawer" role="dialog" aria-modal="true" aria-label="Studio controls">
+    <div class="drawer-head">
+      <div class="drawer-head-left">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sliders"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg>
+        <span>Studio Controls</span>
+      </div>
+      <button id="drawer-close-btn" class="icon-btn" type="button" aria-label="Close studio controls">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+
+    <p class="drawer-note">Set the hero sphere palette. As you scroll, the scene morphs to volt-lime, then rose-pink as the heart assembles.</p>
+
+    <div class="drawer-section-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sparkles"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+      <span>Hero Palette Shaders</span>
+    </div>
+
+    <div id="theme-grid" class="theme-grid">
+      <button class="theme-card" type="button" data-theme="roseGold" data-primary="#2F69FF" data-ball="#2F69FF">
+        <div class="theme-card-row">
+          <span class="theme-card-name">Royal Blue &amp; Pearl</span>
+          <span class="theme-swatch" style="background:#2F69FF"></span>
+        </div>
+        <p class="theme-card-desc">Hyper-distinct cobalt spheres floating in soft white-slate gradients.</p>
+      </button>
+      <button class="theme-card" type="button" data-theme="pinkBlush" data-primary="#FFA6B3" data-ball="#FFC5C2">
+        <div class="theme-card-row">
+          <span class="theme-card-name">Rose Blush &amp; Crème</span>
+          <span class="theme-swatch" style="background:#FFA6B3"></span>
+        </div>
+        <p class="theme-card-desc">Sweet candy pinks and juicy strawberry accents in a pearl studio.</p>
+      </button>
+      <button class="theme-card" type="button" data-theme="voltLime" data-primary="#E1FC03" data-ball="#E1FC03">
+        <div class="theme-card-row">
+          <span class="theme-card-name">Volt Lime &amp; Slate</span>
+          <span class="theme-swatch" style="background:#E1FC03"></span>
+        </div>
+        <p class="theme-card-desc">Electric neon volt-lime against a clean white-slate horizon.</p>
+      </button>
+      <button class="theme-card" type="button" data-theme="arcticBlue" data-primary="#96E5FF" data-ball="#96E5FF">
+        <div class="theme-card-row">
+          <span class="theme-card-name">Arctic Sky &amp; Crystal</span>
+          <span class="theme-swatch" style="background:#96E5FF"></span>
+        </div>
+        <p class="theme-card-desc">Cool arctic crystal blues with a translucent glass sheen.</p>
+      </button>
+    </div>
+
+    <div class="drawer-footer">
+      <p class="drawer-meta">RENDER ENGINE / THREE.JS WEBGL</p>
+      <p class="drawer-meta">DYNAMICS SOLVER / 3D COLLISION VERLET</p>
+      <button id="reset-defaults-btn" class="reset-btn" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-rotate-ccw"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        <span>Reset Defaults</span>
+      </button>
+    </div>
+  </aside>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
